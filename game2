@@ -1,10 +1,12 @@
-outcomes = []
+outcomes = [] # Outcomes list to break the loop eventually
 print("#" * 163)
 print("""Welcome aboard the Ship. It is now 3183 A.D. After widespread nuclear war, Earth is no longer habitable. 
 You are the Head Engineer of a light-speed carrier bound for the outer solar system colonies. Those who are not lucky enough to escape are called
 Unfortunates. Fortunately, your qualifications have placed you with your crew on the way out. If all goes well, you and your crew may escape the turmoil of Earth.
 First, you must prepare the ship for launch while protecting your crew.""")
 print("#" * 163)
+
+# Initial user input with a creative failure mechanism
 start = input("Are you ready? ")
 if start == 'yes':
     print("#" * 163)
@@ -15,7 +17,7 @@ else:
 print("""You have five major tasks in five rooms: comms, engine, steering, pressurizer, and air filtration. 
 Pay attention to what you see and hear around you...""")
 print("#" * 163)
-choose = input("You get to decide where to start (type okay). ")
+choose = input("You get to decide where to start (type okay). ") # Creates the game loop
 while choose == 'okay':
     rooms = input("Where would you like to go? ")
     if rooms == "comms":
@@ -33,7 +35,7 @@ are banging on the entry hatch. We have no room to save them... but we can't jus
             print("#" * 163)
             print("You tell the radio engineer to leave them be, and get back to work until the radio is fixed.")
             print("#" * 163)
-            outcomes.insert(0, "comms")
+            outcomes.insert(0, "comms") # Inserts the room into the list to track progress
     elif rooms == "engine":
         print("#" * 163)
         print("""You walk into the dingy engine room. The slow drip of enginge coolant and oil is coming from deep within the engine.
@@ -105,9 +107,9 @@ ask someone for help""")
             print("You decide to ask your crew for help. You change the filters together, and while you're at it, you clear out the exhaust.")
             print("#" * 163)
             outcomes.insert(4, "filter")
-    if outcomes != ["comms", "engine", "steering", "pressurizer", "filter"]:
+    if outcomes != ["comms", "engine", "steering", "pressurizer", "filter"]: # Continues the loop if the rooms haven't been completely explored
         continue
-    else:
+    else:   # Breaks the loop when all rooms have been explored
         break
 print("""Congratulations. You and your crew make it off of Earth just in time. As warheads rage behind you, you race off into space to start a new life at the edge
       of the galaxy...""")
