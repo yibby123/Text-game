@@ -1,0 +1,114 @@
+outcomes = []
+print("#" * 163)
+print("""Welcome aboard the Ship. It is now 3183 A.D. After widespread nuclear war, Earth is no longer habitable. 
+You are the Head Engineer of a light-speed carrier bound for the outer solar system colonies. Those who are not lucky enough to escape are called
+Unfortunates. Fortunately, your qualifications have placed you with your crew on the way out. If all goes well, you and your crew may escape the turmoil of Earth.
+First, you must prepare the ship for launch while protecting your crew.""")
+print("#" * 163)
+start = input("Are you ready? ")
+if start == 'yes':
+    print("#" * 163)
+    print("Good. Here is the layout of the ship...")
+else:
+    print("There is a bright flash... You are dead. Please restart.")
+    quit()
+print("""You have five major tasks in five rooms: comms, engine, steering, pressurizer, and air filtration. 
+Pay attention to what you see and hear around you...""")
+print("#" * 163)
+choose = input("You get to decide where to start (type okay). ")
+while choose == 'okay':
+    rooms = input("Where would you like to go? ")
+    if rooms == "comms":
+        print("#" * 163)
+        print("""You walk into the comms room at the front of the ship. Looking out the window, you see a wasteland of concrete
+towers and the shadows of fallout bunkers. The radio system in the ship has been sitting for so long, you have no idea
+where to start. The radio engineer said earlier that there have been issues receiving radio signals, so you decide to start
+with the quartz oscillators. At that moment, the radio engineer comes blustering in and says, "Captain! A group of Unfortunates
+are banging on the entry hatch. We have no room to save them... but we can't just leave them out there to die in the fallout!""")
+        print("#" * 163)
+        encounter = input("What do you do? ")
+        if encounter == "save them":
+            print("""You rush to the hatch to let in the unfortunates. Unfortunately... they are hostile, and your crew was brutally murdered. Try again.""")
+        elif encounter == "leave them":
+            print("#" * 163)
+            print("You tell the radio engineer to leave them be, and get back to work until the radio is fixed.")
+            print("#" * 163)
+            outcomes.insert(0, "comms")
+    elif rooms == "engine":
+        print("#" * 163)
+        print("""You walk into the dingy engine room. The slow drip of enginge coolant and oil is coming from deep within the engine.
+It's a tight space, and you might not be able to reach the leak.""")
+        print("#" * 163)
+        choice = input("Proceed? ")
+        if choice == 'yes':
+            print("#" * 163)
+            print("You get stuck in the engine and have to wait for help. Try again.")
+            print("#" * 163)
+        elif choice == 'no':
+            print("#" * 163)
+            print("You decide to call the Mechanic. Surprisingly slight in stature, the Mechanic slips in and fixes the leak.")
+            print("#" * 163)
+            outcomes.insert(1, "engine")
+        else:
+            print("#" * 163)
+            print("A live wire arcs and ignites the engine oil. You suffer severe burns in the explosion. Try again.")
+            print("#" * 163)
+            quit()
+    elif rooms == "steering":
+        print("#" * 163)
+        print("""You won't be able to get off the ground if the steering is shot. The wires connecting to the flaps and rudder are frayed and broken.""")
+        fix = input("The aircraft engineer steps in to help. Do you accept? ")
+        if fix == "no":
+            print("#" * 163)
+            print("You decide to fix the cables yourself. As your crew takes off, the pilot loses control and the carrier pummels into the ground. Please restart.")
+            print("#" * 163)
+        elif fix == "yes":
+            print("#" * 163)
+            print("The aircraft engineer fixes the cable. You thank her for her help.")
+            print("#" * 163)
+            outcomes.insert(2, "steering")
+        else:
+            print("#" * 163)
+            print("Invalid response. Try again.")
+            print("#" * 163)
+    elif rooms == "pressurizer":
+        print("#" * 163)
+        print("""The ship uses a beat up vacuum system from an old National Lab. The ceramics in the turbomolecular pump are all cracked. You have to hunt around for a replacement.
+You can either check the parts bay, or risk going outside the ship to harvest new ceramics.""")
+        print("#" * 163)
+        ceramics = input("Where will you go? ")
+        if ceramics == "parts bay":
+            print("#" * 163)
+            print("You head into the parts bay and check the vacuum supplies. There is just some crusty hoses and housings. Looks like you will have to go outside.")
+            print("#" * 163)
+        elif ceramics == "outside":
+            print("#" * 163)
+            print("""You and the vacuum tech head outside to harvest the ceramics from the two seater spacecraft outside. You take the ceramics from the fully functioning
+vacuum system. You both make it back safely and fix the carrier vacuum system.""")
+            print("#" * 163)
+            outcomes.insert(3, "pressurizer")
+        else:
+            print("Invalid response. Try again.")
+    elif rooms == "air filtration":
+        print("#" * 163)
+        print("""For a prolonged flight, you must have a functioning air filtration system to remove airborne pathogens and dust. It looks like some of the filters
+need replacing.""")
+        print("#" * 163)
+        filter = input("You aren't sure if you just have to change the filters... Will you take a deeper look? ")
+        if filter == "yes":
+            print("#" * 163)
+            print("""You decide to take a deeper look at the filtration system. As you climb up the ladder, you find that the exhaust is blocked. You will have
+ask someone for help""")
+            print("#" * 163)
+        elif filter == "no":
+            print("#" * 163)
+            print("You decide to ask your crew for help. You change the filters together, and while you're at it, you clear out the exhaust.")
+            print("#" * 163)
+            outcomes.insert(4, "filter")
+    if outcomes != ["comms", "engine", "steering", "pressurizer", "filter"]:
+        continue
+    else:
+        break
+print("""Congratulations. You and your crew make it off of Earth just in time. As warheads rage behind you, you race off into space to start a new life at the edge
+      of the galaxy...""")
+print("#" * 163)
